@@ -42,10 +42,12 @@
     $('.openApps').click(function (e) {
       e.stopPropagation();
       $('.appsContainer').toggleClass('d-none');
+      $('.profileContainer').addClass('d-none');
     });
     $('.openProfile').click(function (e) {
       e.stopPropagation();
       $('.profileContainer').toggleClass('d-none');
+      $('.appsContainer').addClass('d-none');
     });
     $(document).on('click', function (e) {
       if (!$('.appsContainer').is(e.target) && !$('.appsContainer').has(e.target).length) {

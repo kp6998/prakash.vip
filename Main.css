@@ -455,6 +455,7 @@ li a {
   margin-top: -1px;
   border-radius: 0 0 25px 25px;
   text-align: justify;
+  z-index: 1;
 }
 
 .search input {
