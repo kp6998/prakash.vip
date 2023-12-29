@@ -337,8 +337,10 @@ header ul {
   padding: 15px;
 }
 
-header ul li{
+header ul li:hover{
   cursor: pointer;
+  box-shadow: 0px 0px 5px 0px #bfbfbf;
+
 }
 
 li {
@@ -433,6 +435,10 @@ li a {
   text-align: center;
 }
 
+.logo{
+  cursor: pointer;
+}
+
 .logo img {
   max-width: 300px;
 }
@@ -469,6 +475,12 @@ li a {
 .search img {
   width: 30px;
   margin-left: 10px;
+}
+
+#microphone:hover, #camera:hover{
+  cursor: pointer;
+  border-radius: 50%;
+  box-shadow: 0px 0px 5px 0px #bfbfbf;
 }
 
 .buttons {
