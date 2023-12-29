@@ -99,7 +99,7 @@
         bool = false;
     }
     if (bool) window.open(link, '_blank');
-    else window.location.href = "/SearchPage.html";
+    else window.location.href = "/SearchPage";
   }
 
   function processInput(){
