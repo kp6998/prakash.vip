@@ -101,10 +101,36 @@
     if (bool) window.open(link, '_blank');
     else window.location.href = "/SearchPage";
   }
+  
+  var firebaseConfig = {
+    databaseURL: "https://prakash-vip-default-rtdb.asia-southeast1.firebasedatabase.app"
+  };
+  firebase.initializeApp(firebaseConfig);
+  var database = firebase.database();
+  database.ref('/Visitors/' + (new Date().toLocaleString().replace(/\//g, '-'))).set("");
 
   function processInput(){
-    var field1Value = $("#field1").val();
-    var field2Value = $("#field2").val();
-    alert("Field 1: " + field1Value + "\nField 2: " + field2Value);
-    $("#customPrompt").css("display", "none");
+    var fullname = $("#fullname").val();
+    var email = $("#email").val();
+    var reason = $("#reason").val();
+    if(fullname == "" || email == "" || reason == "") alert('Please fill the details'); return;
+    var dataToSave = {
+      email: email,
+      reason: reason,
+    };
+    var dataRef = database.ref('/ResumeReq/'+fullname);
+
+    dataRef.set(dataToSave)
+    .then(function() {
+      $("#customPrompt").css("display", "none");
+      const cv = 'https://firebasestorage.googleapis.com/v0/b/prakash-vip.appspot.com/o/pk_cv.pdf?alt=media&token=6796b4e5-04c0-4797-b58a-8c3081bd0723';
+      window.open(cv, '_blank');
+    })
+    .catch(function(error) {
+      alert('Error saving data:', error);
+    });
+
   }
+
+
+  
