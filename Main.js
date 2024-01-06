@@ -107,22 +107,35 @@
   };
   firebase.initializeApp(firebaseConfig);
   var database = firebase.database();
-  database.ref('/Visitors/' + (new Date().toLocaleString().replace(/\//g, '-'))).set("");
+  database.ref('/Visitors/' + new Date().toLocaleDateString().replace(/\//g, '-') + "/" + new Date().toLocaleTimeString()).set(/android|iphone|kindle|ipad/i.test(navigator.userAgent) ? "Mobile" : "Computer");
 
   function processInput(){
     var fullname = $("#fullname").val();
     var email = $("#email").val();
     var reason = $("#reason").val();
-    if(fullname == "" || email == "" || reason == "") alert('Please fill the details'); return;
+    if (fullname == "") {
+      alert('Please enter a valid name.');
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+    if (reason == "") {
+      alert('Please enter a valid reason.');
+      return;
+    }
     var dataToSave = {
+      fullname: fullname,
       email: email,
       reason: reason,
     };
-    var dataRef = database.ref('/ResumeReq/'+fullname);
+    var dataRef = database.ref('/ResumeReq/' + new Date().toLocaleDateString().replace(/\//g, '-') + "/" + new Date().toLocaleTimeString());
 
     dataRef.set(dataToSave)
     .then(function() {
       $("#customPrompt").css("display", "none");
+      $('#name, #email, #reason').val('');
       const cv = 'https://firebasestorage.googleapis.com/v0/b/prakash-vip.appspot.com/o/pk_cv.pdf?alt=media&token=6796b4e5-04c0-4797-b58a-8c3081bd0723';
       window.open(cv, '_blank');
     })
