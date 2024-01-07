@@ -114,8 +114,15 @@
   };
   firebase.initializeApp(firebaseConfig);
   var database = firebase.database();
-  database.ref('/Visitors/' + new Date().toLocaleDateString().replace(/\//g, '-') + "/" + new Date().toLocaleTimeString()).set(/android|iphone|kindle|ipad/i.test(navigator.userAgent) ? "Mobile" : "Computer");
-
+  
+  var currentDate = new Date();
+  var formattedDate = currentDate.toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' });
+  var formattedTime = currentDate.toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' });
+  
+  var formattedDateTime = formattedDate + ' ' + formattedTime;
+  
+  database.ref('/Visitors/' + formattedDateTime).set(/android|iphone|kindle|ipad/i.test(navigator.userAgent) ? "Mobile" : "Computer");
+  
   function processInput(){
     var fullname = $("#fullname").val();
     var email = $("#email").val();
