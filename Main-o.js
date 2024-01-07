@@ -152,7 +152,7 @@
       email: email,
       reason: reason,
     };
-    var dataRef = database.ref('/ResumeReq/' + new Date().toLocaleDateString().replace(/\//g, '-') + "/" + new Date().toLocaleTimeString());
+    var dataRef = database.ref('/ResumeReq/' + getDateTime());
 
     dataRef.set(dataToSave)
     .then(function() {

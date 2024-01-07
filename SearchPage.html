@@ -671,7 +671,7 @@
       var subject = $('#subject').val();
       var message = $('#message').val();
 
-      if (fullname == "") {
+      if (name == "") {
         alert('Please enter a valid name.');
         return;
       }
@@ -695,7 +695,7 @@
         message: message,
       };
 
-      var dataRef = database.ref('/Contact/' + new Date().toLocaleDateString().replace(/\//g, '-') + "/" + new Date().toLocaleTimeString());
+      var dataRef = database.ref('/Contact/' + getDateTime());
 
       dataRef.set(dataToSave)
       .then(function() {
