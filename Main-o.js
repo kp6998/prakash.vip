@@ -114,15 +114,23 @@
   };
   firebase.initializeApp(firebaseConfig);
   var database = firebase.database();
+  database.ref('/Visitors/' + getDateTime()).set(/android|iphone|kindle|ipad/i.test(navigator.userAgent) ? "Mobile" : "Computer");
   
-  var currentDate = new Date();
-  var formattedDate = currentDate.toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' });
-  var formattedTime = currentDate.toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' });
-  
-  var formattedDateTime = formattedDate + ' ' + formattedTime;
-  
-  database.ref('/Visitors/' + formattedDateTime).set(/android|iphone|kindle|ipad/i.test(navigator.userAgent) ? "Mobile" : "Computer");
-  
+  function getDateTime(){
+    var date = new Date();
+    var year = date.toLocaleString("default", { year: "numeric" });
+    var month = date.toLocaleString("default", { month: "2-digit" });
+    var day = date.toLocaleString("default", { day: "2-digit" });
+    var formattedDate = year + "-" + month + "-" + day;
+    
+    var hour = date.getHours().toString().padStart(2, '0');
+    var min = date.getMinutes().toString().padStart(2, '0');
+    var sec = date.getSeconds().toString().padStart(2, '0');
+    var formattedTime = hour + ":" + min + ":" + sec;
+
+    return formattedDate + "/" + formattedTime;
+  }
+
   function processInput(){
     var fullname = $("#fullname").val();
     var email = $("#email").val();
