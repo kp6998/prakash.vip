@@ -614,7 +614,7 @@
 <script>
     $(document).ready(function() {
         var siteValue = sessionStorage.getItem('optTabRef');
-        if(siteValue == "about") AboutAct();
+        if(siteValue == "about" || siteValue == null) AboutAct();
         else if(siteValue == "projects") ProjectsAct();
         else if(siteValue == "contact") ContactAct();
         $('.progress .progress-bar').each(function() {
@@ -622,7 +622,6 @@
             var width = $this.attr('aria-valuenow');
             $this.width(width + '%');
         });
-        AboutAct();
     });
     function AboutAct(){
         sessionStorage.setItem("optTabRef", 'about');
