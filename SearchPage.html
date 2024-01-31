@@ -542,6 +542,9 @@
 </html>
 <script>
   $(document).ready(function () {
+    LoadExp();
+    LoadSkills();
+    LoadProjects();
     var siteValue = sessionStorage.getItem('optTabRef');
     if (siteValue == "about" || siteValue == null) AboutAct();
     else if (siteValue == "projects") ProjectsAct();
@@ -549,8 +552,6 @@
   });
 
   function AboutAct() {
-    LoadExp();
-    LoadSkills();
     sessionStorage.setItem("optTabRef", 'about');
     $('#searchTextBox').val('About prakash');
 
@@ -565,7 +566,6 @@
     $('.skills-tab').removeClass('d-none');
   }
   function ProjectsAct() {
-    LoadProjects();
     sessionStorage.setItem("optTabRef", 'projects');
     $('#searchTextBox').val('Prakash projects');
 
