@@ -1,711 +1,679 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="assets/img/profile-img.jpg">
-    <title> Prakash K </title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
-    <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-database.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="Main.js"></script>
-    <link href="Main.css" rel="stylesheet">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2598116204929988"
-     crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="assets/img/profile-img.jpg">
+  <title> Prakash K </title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-database.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="Main.js"></script>
+  <link href="Main.css" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2598116204929988"
+    crossorigin="anonymous"></script>
 </head>
 <style>
+  body {
+    font-family: arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+  }
+
+  .grid-container {
+    display: flex;
+  }
+
+  .gridItem {
+    border-radius: 8px;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .c-left {
+    width: 10%;
+  }
+
+  .c-center {
+    width: 60%;
+  }
+
+  .c-right {
+    width: 30%;
+  }
+
+  .r-head {
+    align-items: center;
+  }
+
+  .r-neck {
+    border-bottom: 1px solid rgb(225 225 225);
+  }
+
+  .r-neck div {
+    padding-bottom: 0;
+  }
+
+  .r-body {}
+
+  .search {
+    width: 100%;
+    margin: 0;
+  }
+
+  .searchOpt {
+    width: 60%;
+    --light-color: #fff;
+    background: var(--light-color);
+    position: fixed;
+    max-width: calc(60% - 44px);
+  }
+
+  header ul {
+    padding: 0;
+  }
+
+  .optTabs {
+    padding: 0px 10px;
+    margin: 0px 10px;
+    color: #5f6368;
+    cursor: pointer;
+  }
+
+  .optTabs label {
+    cursor: pointer;
+  }
+
+  .r-tabs {
+    display: flex;
+  }
+
+  .activeTab {
+    color: rgb(26, 115, 232);
+    border-bottom: 3px solid;
+  }
+
+  .summary {
+    font-size: 20px;
+    line-height: 28px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgb(225 225 225);
+  }
+
+  #search-results-container {
+    padding: 10px;
+    margin: 0 10px;
+    text-align: start;
+  }
+
+  .search-result {
+    margin: 10px 0;
+    border-bottom: 1px solid rgb(225 225 225);
+  }
+
+  .result-title {
+    color: #1a0dab;
+    line-height: 1.272;
+    margin-bottom: 3px;
+    font-size: 22px;
+    font-family: arial, sans-serif;
+    font-weight: 400;
+  }
+
+  .result-head {
+    line-height: 1.272;
+    font-size: 20px;
+    font-family: arial, sans-serif;
+    font-weight: 400;
+  }
+
+  .result-ofz {
+    line-height: 1.272;
+    font-size: 18px;
+    font-family: arial, sans-serif;
+    font-weight: 400;
+  }
+
+  .result-snippet {
+    color: #545454;
+    margin-bottom: 8px;
+    line-height: 1.272;
+  }
+
+  .progress {
+    text-align: center;
+    margin: 10px;
+  }
+
+  .skill {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+  }
+
+  .progress-bar-wrap {
+    position: relative;
+    height: 15px;
+    background-color: #f0f0f0;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .progress-bar {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(26, 115, 232);
+    transition: width 0.3s ease;
+  }
+
+  .val {
+    font-size: 14px;
+    color: #333;
+    font-style: normal;
+  }
+
+  .skills-tab {
+    padding: 10px;
+    border: 1px solid rgb(225 225 225);
+  }
+
+  @media screen and (max-width: 750px) {
     body {
-        font-family: arial, sans-serif;
-        margin: 0;
-        padding: 20px;
+      padding: 0px;
     }
 
-    .grid-container {
-        display: flex;
+    .profileContainer {}
+
+    .web {
+      display: none;
     }
 
-    .gridItem {
-        border-radius: 8px;
-        text-align: center;
-        padding: 10px;
-    }
-    .c-left{
-        width: 10%;
-    }
-    .c-center{
-        width: 60%;
-    }
-    .c-right{
-        width: 30%;
-    }
-    .r-head{
-        align-items: center;
-    }
-    .r-neck{
-        border-bottom: 1px solid rgb(225 225 225);
-    }
-    .r-neck div{
-        padding-bottom: 0;
-    }
-    .r-body{
-
-    }
-    .search{
-        width: 100%;
-        margin: 0;
-    }
-    .searchOpt{
-        width: 60%;
-        --light-color: #fff;
-        background: var(--light-color);
-        position: fixed;
-        max-width: calc(60% - 44px);
-    }
-    header ul {
-        padding: 0;
-    }
-    .optTabs{
-        padding: 0px 10px;
-        margin: 0px 10px;
-        color: #5f6368;
-        cursor: pointer;
-    }
-    .optTabs label{
-      cursor: pointer;
-    }
-    .r-tabs{
-        display: flex;
-    }
-    .activeTab{
-        color: rgb(26,115,232);
-        border-bottom: 3px solid;
+    .mobile {
+      display: flex !important;
     }
 
-    .summary{
-        font-size: 20px;
-        line-height: 28px;
-        padding-bottom: 10px;
-        border-bottom: 1px solid rgb(225 225 225);
-    }
-    
-    #search-results-container {
-        padding: 10px;
-        margin: 0 10px;
-        text-align: start;
-        }
+    .optTabs {}
 
-        .search-result {
-            margin: 10px 0;
-            border-bottom: 1px solid rgb(225 225 225);
-        }
+    .r-tabs {}
 
-        .result-title {
-            color: #1a0dab;
-            line-height: 1.272;
-            margin-bottom: 3px;
-            font-size: 22px;
-            font-family: arial,sans-serif;
-            font-weight: 400;
-        }
-
-        .result-head {
-            line-height: 1.272;
-            font-size: 20px;
-            font-family: arial,sans-serif;
-            font-weight: 400;
-        }
-
-        .result-ofz{
-            line-height: 1.272;
-            font-size: 18px;
-            font-family: arial,sans-serif;
-            font-weight: 400;
-        }
-
-        .result-snippet {
-            color: #545454;
-            margin-bottom: 8px;
-            line-height: 1.272;
-        }
-
-        .progress {
-            text-align: center;
-            margin: 10px;
-        }
-
-        .skill {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 5px;
-        }
-
-        .progress-bar-wrap {
-            position: relative;
-            height: 15px;
-            background-color: #f0f0f0;
-            overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 100%;
-            background-color: rgb(26,115,232);
-            transition: width 0.3s ease;
-        }
-        
-        .val {
-            font-size: 14px;
-            color: #333;
-            font-style: normal;
-        }
-
-        .skills-tab{
-            padding: 10px;
-            border: 1px solid rgb(225 225 225);
-        }
-
-        @media screen and (max-width: 750px) {
-            body{
-                padding: 0px;
-            }
-            .profileContainer{
-                
-            }
-            .web{
-                display: none;
-            }
-            .mobile{
-                display: flex!important;
-            }
-            .optTabs{
-                
-            }
-            .r-tabs{
-                
-            }
-            .searchOpt{
-                width: 100%;
-                position: relative;
-                max-width: 100%;
-            }
-            .mobile .c-left{
-                width: 50%;
-                align-self: center;
-                padding-bottom: 5px;
-            }
-            .mobile .c-right{
-                width: 50%;
-                align-self: center;
-                padding-bottom: 5px;
-            }
-            .c-center{
-                width: 100%;
-            }
-            .r-neck .c-left, .r-neck .c-right{
-                display: none;
-            }
-            .r-body{
-                display: block;
-            }
-            .r-body .c-left{
-                display: none;
-            }
-            .r-body .c-right{
-                width: 100%;
-            }
-        }
-
-    .form-group .styled-input {
-        width: 100%;
-        padding: 12px;
-        box-sizing: border-box;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        outline-color: rgb(26,115,232);
+    .searchOpt {
+      width: 100%;
+      position: relative;
+      max-width: 100%;
     }
 
-    .form{
-        box-shadow: 0px 0px 10px 0px black;
-        padding: 15px;
-        border-radius: 10px;
+    .mobile .c-left {
+      width: 50%;
+      align-self: center;
+      padding-bottom: 5px;
     }
 
-    .btnSend{
-        background-color: rgb(26,115,232);
-        color: #fff;
+    .mobile .c-right {
+      width: 50%;
+      align-self: center;
+      padding-bottom: 5px;
     }
 
-    .project-title{
-        color: #1a0dab;
-        line-height: 1.272;
-        font-size: 22px;
-        font-family: arial,sans-serif;
-        font-weight: 400;
-    }
-    .project-click:hover{
-        .project-title{
-            text-decoration: underline;
-        }
-        cursor: pointer;
-    }
-    .project-url{
-        line-height: 1.272;
-        font-size: 18px;
-        font-family: arial,sans-serif;
-        font-weight: 400;
-        color: black;
-    }
-    .projectDiv{
-        margin-bottom: 15px;
-    }
-    a{
-        text-decoration: none;
+    .c-center {
+      width: 100%;
     }
 
+    .r-neck .c-left,
+    .r-neck .c-right {
+      display: none;
+    }
+
+    .r-body {
+      display: block;
+    }
+
+    .r-body .c-left {
+      display: none;
+    }
+
+    .r-body .c-right {
+      width: 100%;
+    }
+  }
+
+  .form-group .styled-input {
+    width: 100%;
+    padding: 12px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline-color: rgb(26, 115, 232);
+  }
+
+  .form {
+    box-shadow: 0px 0px 10px 0px black;
+    padding: 15px;
+    border-radius: 10px;
+  }
+
+  .btnSend {
+    background-color: rgb(26, 115, 232);
+    color: #fff;
+  }
+
+  .project-title {
+    color: #1a0dab;
+    line-height: 1.272;
+    font-size: 22px;
+    font-family: arial, sans-serif;
+    font-weight: 400;
+  }
+
+  .project-click:hover {
+    .project-title {
+      text-decoration: underline;
+    }
+
+    cursor: pointer;
+  }
+
+  .project-url {
+    line-height: 1.272;
+    font-size: 18px;
+    font-family: arial, sans-serif;
+    font-weight: 400;
+    color: black;
+  }
+
+  .projectDiv {
+    margin-bottom: 15px;
+  }
+
+  a {
+    text-decoration: none;
+  }
 </style>
+
 <body oncontextmenu="return false;">
-<div class="grid-container mobile d-none">
+  <div class="grid-container mobile d-none">
     <div class="gridItem c-left">
-        <div class="logo" onclick='window.location.href = "/"'>
-            <img src="assets\img\PrakashGLogo.png" style="width: 100%;">
-          </div>
+      <div class="logo" onclick='window.location.href = "/"'>
+        <img src="assets\img\PrakashGLogo.png" style="width: 100%;">
+      </div>
     </div>
     <div class="gridItem c-right">
-        <header>
-            <ul>
-              <li id="appsIcon">
-                <img src="assets\img\AppsIcon.png" class="openApps" style="padding: 3px;" />
-              </li>
-              <li id="user-profile">
-                <img src="assets\img\pk.jpg" class="openProfile" style="border-radius: 50%;" />
-              </li>
-            </ul>
-            <div class="appsContainer d-none">
-              <div class="grid-item openProfile">
-                <img src="assets\img\pk.jpg" style="border-radius: 50%;" />
-                <p>Profile</p>
-              </div>
-              <div class="grid-item" onclick="OpenLink('in')">
-                <img src="images\in.png" alt="linkedin">
-                <p>Linkedin</p>
-              </div>
-              <div class="grid-item" onclick="OpenLink('git')">
-                <img src="images\git.png" alt="github">
-                <p>Github</p>
-              </div>
-              <div class="grid-item" onclick="OpenLink('ig')">
-                <img src="images\ig.png" alt="instagram">
-                <p>Instagram</p>
-              </div>
-              <div class="grid-item" onclick="OpenLink('x')">
-                <img src="images\x.png" alt="twitter">
-                <p>Twitter</p>
-              </div>
-              <div class="grid-item" onclick="OpenLink('yt')">
-                <img src="images\yt.png" alt="youtube">
-                <p>Youtube</p>
-              </div>
-            </div>
-            <div class="profileContainer  d-none">
-              <div class="profileTop">
-                <img src="assets\img\pk.jpg" style="border-radius: 50%; width: 50%; padding-bottom: 10px;" />
-                <label>Prakash K</label>
-                <div class="jobTitle">
-                    <label>Software engineer</label>
-                </div>
-              </div>
-              <div class="profileMid">
-                <span>
-                  I'm an <b>Full-stack Web, Android and Blockchain developer</b> with <b>5+</b> years of experience. 
-                  Proficient in technologies like <b>.NET, Java, Python, JS (jQuery, Vue.js), Solidity,</b>
-                </span>
-              </div>
-            </div>
-          </header>
-    </div>
-</div>
-<div class="grid-container r-head">
-    <div class="gridItem c-left web">
-        <div class="logo" onclick='window.location.href = "/"'>
-            <img src="assets\img\PrakashGLogo.png" style="width: 100%;">
+      <header>
+        <ul>
+          <li id="appsIcon">
+            <img src="assets\img\AppsIcon.png" class="openApps" style="padding: 3px;" />
+          </li>
+          <li id="user-profile">
+            <img src="assets\img\pk.jpg" class="openProfile" style="border-radius: 50%;" />
+          </li>
+        </ul>
+        <div class="appsContainer d-none">
+          <div class="grid-item openProfile">
+            <img src="assets\img\pk.jpg" style="border-radius: 50%;" />
+            <p>Profile</p>
           </div>
+          <div class="grid-item" onclick="OpenLink('in')">
+            <img src="images\in.png" alt="linkedin">
+            <p>Linkedin</p>
+          </div>
+          <div class="grid-item" onclick="OpenLink('git')">
+            <img src="images\git.png" alt="github">
+            <p>Github</p>
+          </div>
+          <div class="grid-item" onclick="OpenLink('ig')">
+            <img src="images\ig.png" alt="instagram">
+            <p>Instagram</p>
+          </div>
+          <div class="grid-item" onclick="OpenLink('x')">
+            <img src="images\x.png" alt="twitter">
+            <p>Twitter</p>
+          </div>
+          <div class="grid-item" onclick="OpenLink('yt')">
+            <img src="images\yt.png" alt="youtube">
+            <p>Youtube</p>
+          </div>
+        </div>
+        <div class="profileContainer  d-none">
+          <div class="profileTop">
+            <img src="assets\img\pk.jpg" style="border-radius: 50%; width: 50%; padding-bottom: 10px;" />
+            <label>Prakash K</label>
+            <div class="jobTitle">
+              <label>Software engineer</label>
+            </div>
+          </div>
+          <div class="profileMid">
+            <span>
+              I'm an <b>Full-stack Web, Android and Blockchain developer</b> with <b>5+</b> years of experience.
+              Proficient in technologies like <b>.NET, Java, Python, JS (jQuery, Vue.js), Solidity,</b>
+            </span>
+          </div>
+        </div>
+      </header>
+    </div>
+  </div>
+  <div class="grid-container r-head">
+    <div class="gridItem c-left web">
+      <div class="logo" onclick='window.location.href = "/"'>
+        <img src="assets\img\PrakashGLogo.png" style="width: 100%;">
+      </div>
     </div>
     <div class="gridItem c-center">
-        <div class="search">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" name="search" id="searchTextBox" autocomplete="off">
-            <img id="microphone" src="assets\img\MicIcon.png" />
-            <img id="camera" src="assets\img\LensIcon.png" />
-            </input>
+      <div class="search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" name="search" id="searchTextBox" autocomplete="off">
+        <img id="microphone" src="assets\img\MicIcon.png" />
+        <img id="camera" src="assets\img\LensIcon.png" />
+        </input>
+      </div>
+      <div class="searchOpt d-none">
+        <div class="optDiv">
+          <i class="fa-regular fa-clock"></i>
+          <p class="opt" data-site="about">About prakash</p>
         </div>
-        <div class="searchOpt d-none">
-            <div class="optDiv">
-              <i class="fa-regular fa-clock"></i>
-              <p class="opt" data-site="about">About prakash</p>
-            </div>
-            <div class="optDiv">
-              <i class="fa-regular fa-clock"></i>
-              <p class="opt" data-site="projects">Prakash projects</p>
-            </div>
-            <div class="optDiv">
-              <i class="fa-regular fa-clock"></i>
-              <p class="opt" data-site="contact">Contact prakash</p>
-            </div>
-            <div class="optDiv">
-              <i class="fa-brands fa-linkedin"></i>
-              <p class="opt" data-site="in">prakash-vip</p>
-            </div>
-            <div class="optDiv">
-              <i class="fa-brands fa-github"></i>
-              <p class="opt" data-site="git">kp6998</p>
-            </div>
-            <div class="optDiv">
-              <i class="fa-brands fa-instagram"></i>
-              <p class="opt" data-site="ig">blah_blah_biker</p>
-            </div>
-            <div class="optDiv">
-              <i class="fa-brands fa-x-twitter"></i>
-              <p class="opt" data-site="x">blah_blah_biker</p>
-            </div>
-            <div class="optDiv">
-              <i class="fa-brands fa-youtube"></i>
-              <p class="opt" data-site="yt">prakash_vip</p>
-            </div>
-            <div id="noMatchMessage" class="d-none">No items match your search.</div>
+        <div class="optDiv">
+          <i class="fa-regular fa-clock"></i>
+          <p class="opt" data-site="projects">Prakash projects</p>
         </div>
+        <div class="optDiv">
+          <i class="fa-regular fa-clock"></i>
+          <p class="opt" data-site="contact">Contact prakash</p>
+        </div>
+        <div class="optDiv">
+          <i class="fa-brands fa-linkedin"></i>
+          <p class="opt" data-site="in">prakash-vip</p>
+        </div>
+        <div class="optDiv">
+          <i class="fa-brands fa-github"></i>
+          <p class="opt" data-site="git">kp6998</p>
+        </div>
+        <div class="optDiv">
+          <i class="fa-brands fa-instagram"></i>
+          <p class="opt" data-site="ig">blah_blah_biker</p>
+        </div>
+        <div class="optDiv">
+          <i class="fa-brands fa-x-twitter"></i>
+          <p class="opt" data-site="x">blah_blah_biker</p>
+        </div>
+        <div class="optDiv">
+          <i class="fa-brands fa-youtube"></i>
+          <p class="opt" data-site="yt">prakash_vip</p>
+        </div>
+        <div id="noMatchMessage" class="d-none">No items match your search.</div>
+      </div>
     </div>
     <div class="gridItem c-right web">
-        <header>
-            <ul>
-              <li id="appsIcon">
-                <img src="assets\img\AppsIcon.png" class="openApps" style="padding: 3px;" />
-              </li>
-              <li id="user-profile">
-                <img src="assets\img\pk.jpg" class="openProfile" style="border-radius: 50%;" />
-              </li>
-            </ul>
-            <div class="appsContainer d-none">
-              <div class="grid-item openProfile">
-                <img src="assets\img\pk.jpg" style="border-radius: 50%;" />
-                <p>Profile</p>
-              </div>
-              <div class="grid-item" onclick="OpenLink('in')">
-                <img src="images\in.png" alt="linkedin">
-                <p>Linkedin</p>
-              </div>
-              <div class="grid-item" onclick="OpenLink('git')">
-                <img src="images\git.png" alt="github">
-                <p>Github</p>
-              </div>
-              <div class="grid-item" onclick="OpenLink('ig')">
-                <img src="images\ig.png" alt="instagram">
-                <p>Instagram</p>
-              </div>
-              <div class="grid-item" onclick="OpenLink('x')">
-                <img src="images\x.png" alt="twitter">
-                <p>Twitter</p>
-              </div>
-              <div class="grid-item" onclick="OpenLink('yt')">
-                <img src="images\yt.png" alt="youtube">
-                <p>Youtube</p>
-              </div>
+      <header>
+        <ul>
+          <li id="appsIcon">
+            <img src="assets\img\AppsIcon.png" class="openApps" style="padding: 3px;" />
+          </li>
+          <li id="user-profile">
+            <img src="assets\img\pk.jpg" class="openProfile" style="border-radius: 50%;" />
+          </li>
+        </ul>
+        <div class="appsContainer d-none">
+          <div class="grid-item openProfile">
+            <img src="assets\img\pk.jpg" style="border-radius: 50%;" />
+            <p>Profile</p>
+          </div>
+          <div class="grid-item" onclick="OpenLink('in')">
+            <img src="images\in.png" alt="linkedin">
+            <p>Linkedin</p>
+          </div>
+          <div class="grid-item" onclick="OpenLink('git')">
+            <img src="images\git.png" alt="github">
+            <p>Github</p>
+          </div>
+          <div class="grid-item" onclick="OpenLink('ig')">
+            <img src="images\ig.png" alt="instagram">
+            <p>Instagram</p>
+          </div>
+          <div class="grid-item" onclick="OpenLink('x')">
+            <img src="images\x.png" alt="twitter">
+            <p>Twitter</p>
+          </div>
+          <div class="grid-item" onclick="OpenLink('yt')">
+            <img src="images\yt.png" alt="youtube">
+            <p>Youtube</p>
+          </div>
+        </div>
+        <div class="profileContainer  d-none">
+          <div class="profileTop">
+            <img src="assets\img\pk.jpg" style="border-radius: 50%; width: 50%; padding-bottom: 10px;" />
+            <label>Prakash K</label>
+            <div class="jobTitle">
+              <label>Software engineer</label>
             </div>
-            <div class="profileContainer  d-none">
-              <div class="profileTop">
-                <img src="assets\img\pk.jpg" style="border-radius: 50%; width: 50%; padding-bottom: 10px;" />
-                <label>Prakash K</label>
-                <div class="jobTitle">
-                    <label>Software engineer</label>
-                </div>
-              </div>
-              <div class="profileMid">
-                <span>
-                  I'm an <b>Full-stack Web, Android and Blockchain developer</b> with <b>5+</b> years of experience. 
-                  Proficient in technologies like <b>.NET, Java, Python, JS (jQuery, Vue.js), Solidity,</b>
-                </span>
-              </div>
-            </div>
-          </header>
+          </div>
+          <div class="profileMid">
+            <span>
+              I'm an <b>Full-stack Web, Android and Blockchain developer</b> with <b>5+</b> years of experience.
+              Proficient in technologies like <b>.NET, Java, Python, JS (jQuery, Vue.js), Solidity,</b>
+            </span>
+          </div>
+        </div>
+      </header>
     </div>
-</div>
-<div class="grid-container r-neck">
+  </div>
+  <div class="grid-container r-neck">
     <div class="gridItem c-left"></div>
     <div class="gridItem c-center">
-        <div class="r-tabs">
-            <div class="optTabs aboutTab activeTab" onclick="AboutAct()">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <label>About</label>
-            </div>
-            <div class="optTabs projectsTab" onclick="ProjectsAct()">
-                <i class="fa-regular fa-folder"></i>
-                <label>Projects</label>
-            </div>
-            <div class="optTabs contactTab" onclick="ContactAct()">
-                <i class="fa-regular fa-paper-plane"></i>
-                <label>Contact</label>
-            </div>
+      <div class="r-tabs">
+        <div class="optTabs aboutTab activeTab" onclick="AboutAct()">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <label>About</label>
         </div>
+        <div class="optTabs projectsTab" onclick="ProjectsAct()">
+          <i class="fa-regular fa-folder"></i>
+          <label>Projects</label>
+        </div>
+        <div class="optTabs contactTab" onclick="ContactAct()">
+          <i class="fa-regular fa-paper-plane"></i>
+          <label>Contact</label>
+        </div>
+      </div>
     </div>
     <div class="gridItem c-right"></div>
-</div>
-<div class="grid-container r-body">
+  </div>
+  <div class="grid-container r-body">
     <div class="gridItem c-left"></div>
     <div class="gridItem c-center">
-        <div id="search-results-container">
-            <div class="about-result">
-                <div class="summary">
-                    B.Sc. Mathematics graduate with 5+ years of experience in corporate, 
-                    specializing in Full-stack and Android application development with expertise in 
-                    .NET, Java, Python, JavaScript (jQuery, Vue.js), and databases 
-                    (MSSQL, PostgreSQL, Firebase).
-                </div>
-                <div class="search-result">
-                    <h3 href="#" class="result-title">Professional Experience</h3>
-                    <div>
-                        <h4 href="#" class="result-head">Software Engineer (Dec 2021 - Present)</h4>
-                        <h4 href="#" class="result-ofz">Bristlecone india limited, Bangalore</h4>
-                        <p class="result-snippet">Currently involved in Full-stack Web Development for an Educational site using Java, Vue JS, .Net Web API and MSSQL. Also worked in Full-stack Web Development and QA Testing for another Educational site, utilizing ColdFusion, Node JS, AWS and Postgres SQL.</p>
-                    </div>
-                    <div>
-                        <h4 href="#" class="result-head">Trainee Software Engineer (Jul 2021 - Nov 2021)</h4>
-                        <h4 href="#" class="result-ofz">Shreyas tech solutions, Chennai</h4>
-                        <p class="result-snippet">Worked in Full-stack Web Development and API Development in C# (.Net MVC) and MSSQL for Airline and Travel Industries sites.</p>
-                    </div>
-                    <div>
-                        <h4 href="#" class="result-head">Officer (Sep 2018 - May 2021)</h4>
-                        <h4 href="#" class="result-ofz">Standard chartered bank, Chennai</h4>
-                        <p class="result-snippet">Worked in payments processing for Import and Exports collections for India.</p>
-                    </div>
-                </div>
-                <div class="search-result">
-                    <h3 href="#" class="result-title">Education</h3>
-                    <div>
-                        <h4 href="#" class="result-head">B.Sc., Mathematics (Jul 2015 - May 2018)</h4>
-                        <h4 href="#" class="result-ofz">Srinivasan college of arts and science - Perambalur</h4>
-                        <p class="result-snippet">Percentage - 63%</p>
-                    </div>
-                </div>
+      <div id="search-results-container">
+        <div class="about-result">
+          <div class="summary">
+            B.Sc. Mathematics graduate with 5+ years of experience in corporate,
+            specializing in Full-stack and Android application development with expertise in
+            .NET, Java, Python, JavaScript (jQuery, Vue.js), and databases
+            (MSSQL, PostgreSQL, Firebase).
+          </div>
+          <div class="search-result">
+            <h3 href="#" class="result-title">Professional Experience</h3>
+            <div class="exp-list"></div>
+          </div>
+          <div class="search-result">
+            <h3 href="#" class="result-title">Education</h3>
+            <div>
+              <h4 href="#" class="result-head">B.Sc., Mathematics (Jul 2015 - May 2018)</h4>
+              <h4 href="#" class="result-ofz">Srinivasan college of arts and science - Perambalur</h4>
+              <p class="result-snippet">Percentage - 63%</p>
             </div>
-            <div class="projects-result">
-                <div class="projectDiv">
-                    <a href="https://www.prakash.vip" target="_blank" class="project-click">
-                        <h3 class="project-title">Personal portfolio</h3>
-                        <h4 class="project-url">https://www.prakash.vip/</h4>
-                    </a>
-                    <p class="result-snippet">This is my personal portfolio website.</p>
-                </div>
-                <div class="projectDiv">
-                    <a href="https://www.sagobikers.com" target="_blank" class="project-click">
-                        <h3 class="project-title">Sago Bikers</h3>
-                        <h4 class="project-url">https://www.sagobikers.com/</h4>
-                    </a>
-                    <p class="result-snippet">This is the bikers community social media platform.</p>
-                </div>
-                <div class="projectDiv">
-                    <a href="https://github.com/kp6998/Face-Recognition" target="_blank" class="project-click">
-                        <h3 class="project-title">Face Recognition</h3>
-                        <h4 class="project-url">https://github.com/kp6998/Face-Recognition</h4>
-                    </a>
-                    <p class="result-snippet">This project is developed for detect and recognize human faces. I used python for this.</p>
-                </div>
-                <div class="projectDiv">
-                    <a href="https://github.com/kp6998/SagoAI" target="_blank" class="project-click">
-                        <h3 class="project-title">Sago AI</h3>
-                        <h4 class="project-url">https://github.com/kp6998/SagoAI</h4>
-                    </a>
-                    <p class="result-snippet">This project is developed for chat with customized ChatGPT chatbot. I used python for this.</p>
-                </div>
-                <div class="projectDiv">
-                    <a href="https://github.com/kp6998/AgoraVC" target="_blank" class="project-click">
-                        <h3 class="project-title">Video call application </h3>
-                        <h4 class="project-url">https://github.com/kp6998/AgoraVC</h4>
-                    </a>
-                    <p class="result-snippet">This project is developed for do video calls. I used Agora SDK for this.</p>
-                </div>
-            </div>
-            <div class="contact-result">
-                <div class="form">
-                    <div style="font-size: 20px;border-bottom: 1px solid rgb(225 225 225); padding: 15px 5px;">Reach me with your message...</div>
-                    <div class="form-group">
-                        <input type="text" name="name" class="styled-input" id="name" required>
-                        <label for="name" class="styled-placeholder">Your Name</label>
-                      </div>
-                      <div class="form-group">
-                        <input type="text" class="styled-input" name="email" id="email" required>
-                        <label for="email" class="styled-placeholder">Your Email</label>
-                      </div>
-                    <div class="form-group">
-                      <input type="text" class="styled-input" name="subject" id="subject" required>
-                      <label for="subject" class="styled-placeholder">Subject</label>
-                    </div>
-                    <div class="form-group">
-                      <textarea class="styled-input" name="message" id="message" rows="4" required></textarea>
-                      <label for="message" class="styled-placeholder">Your Message...</label>
-                    </div>
-                    <div class="" style="text-align: right;">
-                      <button type="submit" class="btn btnSend" onclick="SendMsg()">Send Message</button>
-                    </div>
-                  </div>
-            </div>
+          </div>
         </div>
+        <div class="projects-result"></div>
+        <div class="contact-result">
+          <div class="form">
+            <div style="font-size: 20px;border-bottom: 1px solid rgb(225 225 225); padding: 15px 5px;">Reach me with
+              your message...</div>
+            <div class="form-group">
+              <input type="text" name="name" class="styled-input" id="name" required>
+              <label for="name" class="styled-placeholder">Your Name</label>
+            </div>
+            <div class="form-group">
+              <input type="text" class="styled-input" name="email" id="email" required>
+              <label for="email" class="styled-placeholder">Your Email</label>
+            </div>
+            <div class="form-group">
+              <input type="text" class="styled-input" name="subject" id="subject" required>
+              <label for="subject" class="styled-placeholder">Subject</label>
+            </div>
+            <div class="form-group">
+              <textarea class="styled-input" name="message" id="message" rows="4" required></textarea>
+              <label for="message" class="styled-placeholder">Your Message...</label>
+            </div>
+            <div class="" style="text-align: right;">
+              <button type="submit" class="btn btnSend" onclick="SendMsg()">Send Message</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="gridItem c-right">
-        <div class="skills-tab">
-            <div style="font-size: 20px;border-bottom: 1px solid rgb(225 225 225); padding: 5px;">Skills</div>
-            <div>
-                  <div class="progress">
-                    <span class="skill">JavaScript and Jquery<i class="val">90%</i></span>
-                    <div class="progress-bar-wrap">
-                      <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                  </div>
-                  <div class="progress">
-                    <span class="skill">C# (.NET) <i class="val">95%</i></span>
-                    <div class="progress-bar-wrap">
-                      <div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                  </div>
-                  <div class="progress">
-                    <span class="skill">Java <i class="val">75%</i></span>
-                    <div class="progress-bar-wrap">
-                      <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                  </div>
-                  <div class="progress">
-                    <span class="skill">Vue JS <i class="val">85%</i></span>
-                    <div class="progress-bar-wrap">
-                      <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                  </div>
-                  <div class="progress">
-                    <span class="skill">ColdFusion <i class="val">75%</i></span>
-                    <div class="progress-bar-wrap">
-                      <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                  </div>
-                  <div class="progress">
-                    <span class="skill">MSSQL <i class="val">100%</i></span>
-                    <div class="progress-bar-wrap">
-                      <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                  </div>
-                  <div class="progress">
-                    <span class="skill"> Postgres SQL <i class="val">75%</i></span>
-                    <div class="progress-bar-wrap">
-                      <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                  </div>
-                  <div class="progress">
-                    <span class="skill">Firebase <i class="val">80%</i></span>
-                    <div class="progress-bar-wrap">
-                      <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                  </div>
-            </div>
-        </div>
+      <div class="skills-tab">
+        <div style="font-size: 20px;border-bottom: 1px solid rgb(225 225 225); padding: 5px;">Skills</div>
+        <div class="skills-list"></div>
+      </div>
     </div>
-</div>
+  </div>
 </body>
+
 </html>
 <script>
-    $(document).ready(function() {
-        var siteValue = sessionStorage.getItem('optTabRef');
-        if(siteValue == "about" || siteValue == null) AboutAct();
-        else if(siteValue == "projects") ProjectsAct();
-        else if(siteValue == "contact") ContactAct();
-        $('.progress .progress-bar').each(function() {
-            var $this = $(this);
-            var width = $this.attr('aria-valuenow');
-            $this.width(width + '%');
-        });
+  $(document).ready(function () {
+    var siteValue = sessionStorage.getItem('optTabRef');
+    if (siteValue == "about" || siteValue == null) AboutAct();
+    else if (siteValue == "projects") ProjectsAct();
+    else if (siteValue == "contact") ContactAct();
+  });
+
+  function AboutAct() {
+    LoadExp();
+    LoadSkills();
+    sessionStorage.setItem("optTabRef", 'about');
+    $('#searchTextBox').val('About prakash');
+
+    $('.aboutTab').addClass('activeTab');
+    $('.projectsTab').removeClass('activeTab');
+    $('.contactTab').removeClass('activeTab');
+
+    $('.about-result').removeClass('d-none');
+    $('.projects-result').addClass('d-none');
+    $('.contact-result').addClass('d-none');
+
+    $('.skills-tab').removeClass('d-none');
+  }
+  function ProjectsAct() {
+    LoadProjects();
+    sessionStorage.setItem("optTabRef", 'projects');
+    $('#searchTextBox').val('Prakash projects');
+
+    $('.aboutTab').removeClass('activeTab');
+    $('.projectsTab').addClass('activeTab');
+    $('.contactTab').removeClass('activeTab');
+
+    $('.about-result').addClass('d-none');
+    $('.projects-result').removeClass('d-none');
+    $('.contact-result').addClass('d-none');
+
+    $('.skills-tab').addClass('d-none');
+  }
+  function ContactAct() {
+    sessionStorage.setItem("optTabRef", 'contact');
+    $('#searchTextBox').val('Contact prakash');
+
+    $('.aboutTab').removeClass('activeTab');
+    $('.projectsTab').removeClass('activeTab');
+    $('.contactTab').addClass('activeTab');
+
+    $('.about-result').addClass('d-none');
+    $('.projects-result').addClass('d-none');
+    $('.contact-result').removeClass('d-none');
+
+    $('.skills-tab').addClass('d-none');
+  }
+
+  function LoadExp() {
+    $.getJSON('data/Exp.json', function (data) {
+      data.forEach(function (experience) {
+        var expDiv = $('<div>');
+        expDiv.append('<h4 class="result-head">' + experience.position + ' (' + experience.date + ')</h4>');
+        expDiv.append('<h4 class="result-ofz">' + experience.company + '</h4>');
+        expDiv.append('<p class="result-snippet">' + experience.description + '</p>');
+        $('.exp-list').append(expDiv);
+      });
     });
-    function AboutAct(){
-        sessionStorage.setItem("optTabRef", 'about');
-        $('#searchTextBox').val('About prakash');
+  }
+  function LoadSkills() {
+    $.getJSON('data/Skills.json', function (data) {
+      data.forEach(function (skill) {
+        var skillDiv = $('<div class="progress">');
+        skillDiv.append('<span class="skill">' + skill.name + ' <i class="val"></i></span>');
+        skillDiv.append('<div class="progress-bar-wrap"><div class="progress-bar" role="progressbar" aria-valuenow="' + skill.percentage + '" aria-valuemin="0" aria-valuemax="100"></div></div>');
+        $('.skills-list').append(skillDiv);
+      });
+      $('.progress .progress-bar').each(function () {
+        var $this = $(this);
+        var width = $this.attr('aria-valuenow');
+        $this.width(width + '%');
+      });
+    });
+  }
 
-        $('.aboutTab').addClass('activeTab');
-        $('.projectsTab').removeClass('activeTab');
-        $('.contactTab').removeClass('activeTab');
+  function LoadProjects() {
+    $.getJSON('data/Projects.json', function (data) {
+      data.forEach(function (project) {
+        var projectDiv = $('<div class="projectDiv">');
+        var projectLink = $('<a href="' + project.url + '" target="_blank" class="project-click">');
+        projectLink.append('<h3 class="project-title">' + project.title + '</h3>');
+        projectLink.append('<h4 class="project-url">' + project.url + '</h4>');
+        projectDiv.append(projectLink);
+        projectDiv.append('<p class="result-snippet">' + project.description + '</p>');
+        $('.projects-result').append(projectDiv);
+      });
+    });
+  }
 
-        $('.about-result').removeClass('d-none');
-        $('.projects-result').addClass('d-none');
-        $('.contact-result').addClass('d-none');
+  function SendMsg() {
+    var name = $('#name').val();
+    var email = $('#email').val();
+    var subject = $('#subject').val();
+    var message = $('#message').val();
 
-        $('.skills-tab').removeClass('d-none');
+    if (name == "") {
+      alert('Please enter a valid name.');
+      return;
     }
-    function ProjectsAct(){
-        sessionStorage.setItem("optTabRef", 'projects');
-        $('#searchTextBox').val('Prakash projects');
-
-        $('.aboutTab').removeClass('activeTab');
-        $('.projectsTab').addClass('activeTab');
-        $('.contactTab').removeClass('activeTab');
-
-        $('.about-result').addClass('d-none');
-        $('.projects-result').removeClass('d-none');
-        $('.contact-result').addClass('d-none');
-
-        $('.skills-tab').addClass('d-none');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      alert('Please enter a valid email address.');
+      return;
     }
-    function ContactAct(){
-        sessionStorage.setItem("optTabRef", 'contact');
-        $('#searchTextBox').val('Contact prakash');
-
-        $('.aboutTab').removeClass('activeTab');
-        $('.projectsTab').removeClass('activeTab');
-        $('.contactTab').addClass('activeTab');
-        
-        $('.about-result').addClass('d-none');
-        $('.projects-result').addClass('d-none');
-        $('.contact-result').removeClass('d-none');
-
-        $('.skills-tab').addClass('d-none');
+    if (subject == "") {
+      alert('Please enter a valid subject.');
+      return;
+    }
+    if (message == "") {
+      alert('Please enter a valid message.');
+      return;
     }
 
-    function SendMsg(){
-      var name = $('#name').val();
-      var email = $('#email').val();
-      var subject = $('#subject').val();
-      var message = $('#message').val();
+    var dataToSave = {
+      name: name,
+      email: email,
+      subject: subject,
+      message: message,
+    };
 
-      if (name == "") {
-        alert('Please enter a valid name.');
-        return;
-      }
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        alert('Please enter a valid email address.');
-        return;
-      }
-      if (subject == "") {
-        alert('Please enter a valid subject.');
-        return;
-      }
-      if (message == "") {
-        alert('Please enter a valid message.');
-        return;
-      }
+    var dataRef = database.ref('/Contact/' + getDateTime());
 
-      var dataToSave = {
-        name: name,
-        email: email,
-        subject: subject,
-        message: message,
-      };
-
-      var dataRef = database.ref('/Contact/' + getDateTime());
-
-      dataRef.set(dataToSave)
-      .then(function() {
+    dataRef.set(dataToSave)
+      .then(function () {
         $('#name, #email, #subject, #message').val('');
         alert("Your message is saved, I'll respond you ASAP!🙂")
       })
-      .catch(function(error) {
+      .catch(function (error) {
         alert('Error saving data:', error);
       });
-    }
+  }
 </script>
-

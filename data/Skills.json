@@ -1,0 +1,13 @@
+[
+    { "name": "JavaScript and jQuery", "percentage": 100 },
+    { "name": "React JS", "percentage": 95 },
+    { "name": "Web3.js", "percentage": 90 },
+    { "name": "C# (.NET)", "percentage": 100 },
+    { "name": "Java", "percentage": 85 },
+    { "name": "Python", "percentage": 75 },
+    { "name": "Solidity", "percentage": 95 },
+    { "name": "MSSQL", "percentage": 100 },
+    { "name": "MySQL", "percentage": 75 },
+    { "name": "Postgres SQL", "percentage": 80 },
+    { "name": "Firebase", "percentage": 85 }
+]

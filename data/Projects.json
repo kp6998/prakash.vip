@@ -1,0 +1,37 @@
+[
+    {
+        "title": "Personal website",
+        "url": "https://www.prakash.vip/",
+        "description": "A responsive personal website with custom AI chatbot using HTML, CSS, jQuery, Firebase, JSFuck for frontend, and Python, ChatGPT API, ngrok for backend. Deployed in AWS. Visitors can interact with Chatbot."
+    },
+    {
+        "title": "Sago Token - ERC20",
+        "url": "https://sago-token.prakash.vip/",
+        "description": "Developed Sago token, an ERC-20 cryptocurrency based on OpenZeppelin library. This token facilitates seamless buying, selling, and transferring within a decentralized network. Currently deployed in Goerli test network. Used solidity for contract, jQuery and web3.js for UI."
+    },
+    {
+        "title": "Hey Sago",
+        "url": "https://bit.ly/heysago",
+        "description": "This is a model web app with decentralized network for store all peoples DOB, from birth to entire life span they ‘ll get +/- points based on their behavior from peoples they are interact. Used solidity, React JS, web3.jsand Truffle framework."
+    },
+    {
+        "title": "Sago Bikers",
+        "url": "https://sagobikers.prakash.vip/",
+        "description": "Developing a kind of social media application for biking community platforms in Android application using Java and Full-stack Web API Application using C#(.Net MVC), jQuery, HTML, CSS, Bootstrap with MSSQL and Firebase Realtime database. In this application users can like, comment, share on the posts also they can chat with one to one and chat in groups."
+    },
+    {
+        "title": "Face Recognition",
+        "url": "https://github.com/kp6998/Face-Recognition",
+        "description": "This project is developed for detecting and recognizing human faces. I used Python for this."
+    },
+    {
+        "title": "Sago AI",
+        "url": "https://github.com/kp6998/SagoAI",
+        "description": "This project is developed for chatting with a customized ChatGPT chatbot. I used Python for this."
+    },
+    {
+        "title": "Video call application",
+        "url": "https://github.com/kp6998/AgoraVC",
+        "description": "This project is developed for doing video calls. I used Agora SDK for this."
+    }
+]

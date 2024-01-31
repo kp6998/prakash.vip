@@ -1,0 +1,20 @@
+[
+    {
+        "position": "Software Engineer",
+        "date": "Dec 2021 - Present",
+        "company": "Bristlecone India Limited, Bangalore",
+        "description": "Currently involved in Full-stack Web Development for an Educational site using Java, Vue JS, .Net Web API, and MSSQL. Also worked in Full-stack Web Development and QA Testing for another Educational site, utilizing ColdFusion, Node JS, AWS, and Postgres SQL."
+    },
+    {
+        "position": "Trainee Software Engineer",
+        "date": "Jul 2021 - Nov 2021",
+        "company": "Shreyas Tech Solutions, Chennai",
+        "description": "Worked in Full-stack Web Development and API Development in C# (.Net MVC) and MSSQL for Airline and Travel Industries sites."
+    },
+    {
+        "position": "Officer",
+        "date": "Sep 2018 - May 2021",
+        "company": "Standard Chartered Bank, Chennai",
+        "description": "Worked in payments processing for Import and Exports collections for India."
+    }
+]
