@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  saveVisitorData();
   $('.language').click(function () {
     var textContent = $(this).text();
     const textRWS = "I can Read, Write and Speak ";
@@ -114,21 +115,34 @@ var firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
-database.ref('/Visitors/' + getDateTime()).set(/android|iphone|kindle|ipad/i.test(navigator.userAgent) ? "Mobile" : "Computer");
 
-function getDateTime() {
+async function getUserIp () {
+  const response = await fetch("https://api.ipify.org?format=json");
+  const data = await response.json();
+  return data.ip.replace(/\./g, "-");
+}
+async function saveVisitorData () {
+  database.ref('/Visitors/' + getDate() + '/' + await getUserIp() + '/' + getTime()).set(/android|iphone|kindle|ipad/i.test(navigator.userAgent) ? "Mobile" : "Computer");
+}
+
+function getDate(){
   var date = new Date();
   var year = date.toLocaleString("default", { year: "numeric" });
   var month = date.toLocaleString("default", { month: "2-digit" });
   var day = date.toLocaleString("default", { day: "2-digit" });
-  var formattedDate = year + "-" + month + "-" + day;
+  return year + "-" + month + "-" + day;
+}
 
+function getTime(){
+  var date = new Date();
   var hour = date.getHours().toString().padStart(2, '0');
   var min = date.getMinutes().toString().padStart(2, '0');
   var sec = date.getSeconds().toString().padStart(2, '0');
-  var formattedTime = hour + ":" + min + ":" + sec;
+  return hour + ":" + min + ":" + sec;
+}
 
-  return formattedDate + "/" + formattedTime;
+function getDateTime() {
+  return getDate() + "/" + getTime();
 }
 
 function processInput() {
@@ -166,5 +180,3 @@ function processInput() {
     });
 
 }
-
-
