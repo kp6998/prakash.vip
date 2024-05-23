@@ -121,6 +121,9 @@ async function getUserIp () {
   const data = await response.json();
   return data.ip.replace(/\./g, "-");
 }
+async function saveMessages(mge){
+  database.ref('/Messages/' + getDate() + '/' + await getUserIp() + '/' + getTime()).set(mge);
+}
 async function saveVisitorData () {
   database.ref('/Visitors/' + getDate() + '/' + await getUserIp() + '/' + getTime()).set(/android|iphone|kindle|ipad/i.test(navigator.userAgent) ? "Mobile" : "Computer");
 }

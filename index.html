@@ -275,7 +275,7 @@
     }
   });
 
-  function CallAPI() {
+  async function CallAPI() {
     $('.send').addClass('d-none');
     $('.loader').addClass('d-block');
     var txtInput = $('#txtInput').val();
@@ -284,6 +284,7 @@
     }
     $('#txtInput').val('');
     renderMessageEle(txtInput, "user");
+    await saveMessages(txtInput);
     $.ajax({
       url: 'https://73dd-54-87-0-170.ngrok-free.app/my_api_endpoint',
       type: 'GET',
