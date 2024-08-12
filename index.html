@@ -183,7 +183,7 @@
         <div class="input-sec">
           <input type="text" id="txtInput" placeholder="Type here" autofocus />
         </div>
-        <div class="send" onclick="CallAPI()">
+        <div class="send" id="sendButton">
           <img src="images/send.svg" alt="send" />
         </div>
         <div class="loader" hidden></div>
@@ -268,13 +268,15 @@
     chatBody.append(messageEle);
     setScrollPosition();
   };
-  $('input').on("keypress", function (e) {
+  $('input').on("keypress", async function (e) {
     if (e.keyCode == 13) {
-      CallAPI();
+      await CallAPI();
       return false;
     }
   });
-
+  document.getElementById('sendButton').onclick = async function() {
+    await CallAPI();
+  };
   async function CallAPI() {
     $('.send').addClass('d-none');
     $('.loader').addClass('d-block');
@@ -286,11 +288,15 @@
     renderMessageEle(txtInput, "user");
     await saveMessages(txtInput);
     $.ajax({
-      url: 'https://73dd-54-87-0-170.ngrok-free.app/my_api_endpoint',
-      type: 'GET',
-      data: {
-        'param': CustomTrainMsg() + txtInput + "."
+      url: 'https://ee1f-34-207-84-63.ngrok-free.app/my_api_endpoint',
+      type: 'POST',
+      contentType: 'application/json',
+      headers: {
+        'ngrok-skip-browser-warning': '1',
       },
+      data: JSON.stringify({
+        'param': txtInput,
+      }),
       success: function (response) {
         renderMessageEle(response)
         $('.send').removeClass('d-none');
