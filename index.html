@@ -288,23 +288,19 @@
     renderMessageEle(txtInput, "user");
     await saveMessages(txtInput);
     $.ajax({
-      url: 'https://ee1f-34-207-84-63.ngrok-free.app/my_api_endpoint',
-      type: 'POST',
-      contentType: 'application/json',
-      headers: {
-        'ngrok-skip-browser-warning': '1',
-      },
+      url: 'https://ai-api-nodejs.onrender.com/api?prompt='+txtInput,
+      type: 'GET',
       data: JSON.stringify({
-        'param': txtInput,
+        'prompt': txtInput,
       }),
       success: function (response) {
-        renderMessageEle(response)
+        renderMessageEle(response.message)
         $('.send').removeClass('d-none');
         $('.loader').removeClass('d-block');
       },
       error: function (error) {
-        console.log(error);
-        renderMessageEle("Sorry some error occured, Please retry after a minute.")
+        console.error(error);
+        renderMessageEle("Sorry, some error occurred. Please retry after some time.")
         $('.send').removeClass('d-none');
         $('.loader').removeClass('d-block');
       }
